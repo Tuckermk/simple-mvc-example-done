@@ -3,6 +3,7 @@ const models = require('../models');
 
 // get the Cat model
 const { Cat } = models;
+const { Dog } = models;
 
 // Function to handle rendering the index page.
 const hostIndex = async (req, res) => {
@@ -98,6 +99,9 @@ const hostPage2 = (req, res) => {
 // Function to render the untemplated page3.
 const hostPage3 = (req, res) => {
   res.render('page3');
+};
+const hostPage4 = (req, res) => {
+  res.render('page4');
 };
 
 // Get name will return the name of the last added cat.
@@ -283,14 +287,29 @@ const notFound = (req, res) => {
   });
 };
 
+
+const addDog = async(req, res) => {
+    try {
+    const { name, breed, age } = req.body;
+
+    const existingDog = await Dog.findOne({ name });
+    }
+    catch (err){
+      
+    }
+}
+
 // export the relevant public controller functions
 module.exports = {
   index: hostIndex,
   page1: hostPage1,
   page2: hostPage2,
   page3: hostPage3,
+  page4: hostPage4,
   getName,
   setName,
+  addDog,
+  increaseAge,
   updateLast,
   searchName,
   notFound,
