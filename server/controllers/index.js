@@ -295,8 +295,17 @@ const addDog = async(req, res) => {
     const existingDog = await Dog.findOne({ name });
     }
     catch (err){
-      
+
     }
+}
+const increaseAge = async (req, res) => {
+  try{
+    const existingDog = await Dog.findOne({ name });
+    existingDog.age++;
+  }
+  catch(err){
+
+  }
 }
 
 // export the relevant public controller functions
